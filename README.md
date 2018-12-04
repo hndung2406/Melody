@@ -1,7 +1,7 @@
 # Mongo-Node
 NodeJs and MongoDb
 
-MIT License
+# MIT License
 
 Copyright (c) 2018 Dung Hoang
 
