@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form class="" action="/add" method="POST">
+            <label for="">Add Todos</label>
+            <input type="text" name="text" value="">
+            <button class="btn-primary" type="submit" name="button">Add</button>
+        </form>
+        {{#if success}}
+            <p>Successfully Added</p>
+        {{/if}}
+    </body>
+</html>
