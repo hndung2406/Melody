@@ -1,5 +1,5 @@
 # Mongo-Node
-NodeJs and MongoDb
+Created with NodeJs/ExpressJs, MongoDb/Mongoose for manipulating database and Handlebars for Front-end
 
 # MIT License
 
