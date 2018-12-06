@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Add Todos</title>
+        {{> header}}
+    </head>
+    <body>
+        {{> navbar}}
+        <div class="container">
+            <!-- Text -->
+            <h1 style="text-align: center; padding-top: 20px; padding-bottom: 20px"> Add Todo</h1>
+
+            <!-- Add form -->
+            <div class="card mx-auto" style="width: 400px;">
+                <div class="container">
+                    <form class="" action="/add" method="POST">
+                        <div class="form-group">
+                            <label style="padding-top:10px">Add Todos</label>
+                            <input type="text" class="form-control" name="text" valsue="">
+                            {{#if success}}
+                                <small>Successfully Added</small>
+                            {{/if}}
+                            <div class="" style="display: flex; justify-content: flex-end">
+                                <button style="margin-top: 10px; width: 80px" class="btn btn-primary" type="submit" name="button">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        {{> footer}}
+    </body>
+</html>

@@ -2,16 +2,25 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Home</title>
+        <style media="screen">
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+            }
+        </style>
+        {{> header}}
     </head>
     <body>
-        <form class="" action="/add" method="POST">
-            <label for="">Add Todos</label>
-            <input type="text" name="text" value="">
-            <button class="btn-primary" type="submit" name="button">Add</button>
-        </form>
-        {{#if success}}
-            <p>Successfully Added</p>
-        {{/if}}
+        {{> navbar}}
+        <div class="container">
+            <!-- Welcoming text -->
+            <h1 style="text-align: center">Welcome to my website</h1>
+            <h4 style="text-align: center">Some happy picture of me and my love one</h4>
+            <img src="./TuLinh.jpg" class="center">
+        </div>
+        {{> footer}}
     </body>
 </html>

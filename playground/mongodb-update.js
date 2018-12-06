@@ -10,6 +10,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     console.log('Connected to MongoDb server');
     const db = client.db(dbName);
 
+    //Update
     db.collection('Todos').findOneAndUpdate({
         text: "Something to do"
     }, {

@@ -2,42 +2,106 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <style>
-            table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-            }
-
+        <title>List Todos</title>
+        <style media="screen">
             td, th {
                 border: 1px solid #dddddd;
                 text-align: left;
                 padding: 8px;
             }
-
-            tr:nth-child(even) {
-                background-color: #dddddd;
-            }
         </style>
+        {{> header}}
     </head>
-    
+
     <body>
-        <h1>Todo List</h1>
-        <table>
-            <tr>
-                <th>Text</th>
-                <th>Completed</th>
-                <th>Time</th>
-            </tr>
-            {{#each todos}}
+        {{> navbar}}
+        <div class="container">
+            <h1 style="text-align: center; padding-top: 20px; padding-bottom: 20px">Todo List</h1>
+            <table class="table table-striped">
                 <tr>
-                    <th>{{text}}</th>
-                    <th>{{completed}}</th>
-                    <th>{{completedAt}}</th>
+                    <th style="display: none">Id</th>
+                    <th>Todo</th>
+                    <th>Completed</th>
+                    <th>Time</th>
+                    <th>Operation</th>
                 </tr>
-            {{/each}}
-        </table>
+                {{#each todos}}
+                    <tr>
+                        <th style="display: none">{{_id}}</th>
+                        <th>{{text}}</th>
+                        <th>{{completed}}</th>
+                        <th>{{completedAt}}</th>
+                        <th>
+                            <button class="btn btn-info" type="button" data-toggle="modal" data-target="#updateModal" style="margin-right: 10px">Update</button>
+                            <button class="btn btn-danger" type="button"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </th>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+
+        <!-- Modal Update-->
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="" action="/update" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="hidden" name="id" id="id">
+                            </div>
+                            <div class="form-group">
+                                <label>Todo</label>
+                                <input type="text" class="form-control" id="text" name="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Completed</label>
+                                <select class="form-control" id="select-completed" name="completed">
+                                    <option value="True">Yes</option>
+                                    <option value="False">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="button-save">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Delete-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="" action="/delete" method="post">
+                        <div class="modal-body">
+                            <p>Do you want to delete?</p>
+                            <input type="hidden" name="idDelete" id="idDelete">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-warning" id="button-delete">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/list.js"></script>
+        {{> footer}}
     </body>
 
 </html>
