@@ -18,6 +18,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 //Set the view engine for node
 app.set('view engine', 'hbs');
 app.use("/js",express.static(__dirname + "/views/js"));
+app.use("/css", express.static(__dirname + "/views/css"));
 app.use(express.static(__dirname + "/images"));
 
 //Middleware for bodyParser
@@ -39,6 +40,8 @@ app.use((req, res, next) => {
     next();
 });
 
+//POST REQUEST
+//Add todo
 app.post('/add', (req,res) => {
     var todo = new Todo({
         text: req.body.text
@@ -52,6 +55,7 @@ app.post('/add', (req,res) => {
     });
 });
 
+//Update todo
 app.post('/update', (req, res) => {
     var completed = null;
     var completedAt = null;
@@ -84,6 +88,7 @@ app.post('/update', (req, res) => {
 
 });
 
+//Update todo
 app.post('/delete', (req, res) => {
     Todo.findByIdAndRemove(req.body.idDelete).then((todo) => {
         if(!todo) {
@@ -95,28 +100,23 @@ app.post('/delete', (req, res) => {
     });
 });
 
-app.get('/todos/:id', (req, res) => {
-    Todo.findById(req.params.id).then((todos) => {
-        res.render('single.hbs', {
-            todos: todos
-        });
-    }, (err) => {
-        res.status(400).send(err);
-    });
-})
+// app.get('/todos/:id', (req, res) => {
+//     Todo.findById(req.params.id).then((todos) => {
+//         res.render('single.hbs', {
+//             todos: todos
+//         });
+//     }, (err) => {
+//         res.status(400).send(err);
+//     });
+// })
+
+
+//GET REQUEST
 
 app.get('/add', (req, res) => {
     var success = req.query.success;
     res.render('add.hbs', {
         success: success
-    });
-});
-
-app.get('/todos', (req, res) => {
-    Todo.find({}).then((todos) => {
-        res.send({todos});
-    }, (err) => {
-        res.status(400).send(err);
     });
 });
 
