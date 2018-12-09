@@ -17,6 +17,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 //Set the view engine for node
 app.set('view engine', 'hbs');
+
+//Static folders
 app.use("/js",express.static(__dirname + "/views/js"));
 app.use("/css", express.static(__dirname + "/views/css"));
 app.use(express.static(__dirname + "/images"));
@@ -100,19 +102,8 @@ app.post('/delete', (req, res) => {
     });
 });
 
-// app.get('/todos/:id', (req, res) => {
-//     Todo.findById(req.params.id).then((todos) => {
-//         res.render('single.hbs', {
-//             todos: todos
-//         });
-//     }, (err) => {
-//         res.status(400).send(err);
-//     });
-// })
-
-
 //GET REQUEST
-
+//Add successful
 app.get('/add', (req, res) => {
     var success = req.query.success;
     res.render('add.hbs', {
@@ -120,6 +111,7 @@ app.get('/add', (req, res) => {
     });
 });
 
+//Get the list of all todos
 app.get('/list', (req, res) => {
     Todo.find({}).then((todos) => {
         res.render('list.hbs', {todos});
@@ -127,6 +119,7 @@ app.get('/list', (req, res) => {
         res.status(400).send(err);
     });
 });
+
 
 app.get('/', (req, res) => {
     res.render('home.hbs');
