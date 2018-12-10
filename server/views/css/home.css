@@ -13,14 +13,14 @@
     text-shadow: #EDEDED 3px 2px 0;
     position: relative;
     text-align: center;
-    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 #logo:after {
     content:"Welcome";
     position: absolute;
-    left: 190px;
-    top: 35px;
+    left: 195px;
+    top: 8px;
 }
 
 #logo:after {
@@ -33,39 +33,4 @@
     display: block;
     text-shadow: none;
     text-align: center;
-}
-
-.image {
-    display: block;
-    width: 320px;
-    height: auto;
-}
-
-.overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-    color: #f1f1f1;
-    width: 320px;
-    transition: .5s ease;
-    opacity:0;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-.container-hover {
-    position: relative;
-    width: 50%;
-    max-width: 300px;
-}
-
-.container-hover:hover .overlay {
-    opacity: 1;
-}
-
-.row-help {
-    padding-top: 50px;
 }

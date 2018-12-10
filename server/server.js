@@ -3,11 +3,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const hbs = require('hbs');
+const multer = require('multer');
 
 //Local import
-const {mongoose} = require('./db/mongoose');
-const {Todo} = require('./model/todo');
-const {User} = require('./model/user');
+const mongoose = require('./db/mongoose');
+const Todo = require('./model/todo');
 
 //Use express
 var app = express();
@@ -41,6 +41,32 @@ app.use((req, res, next) => {
     })
     next();
 });
+
+//Store and Validation Multer
+const multerConf = {
+    storage : multer.diskStorage({
+        destination : (req, file, cb) => {
+            cb(null, './images');
+        },
+        filename : (req, file, cb) => {
+            const extension = file.mimetype.split('/')[1];
+            var convert = req.body.fileName.replace(/\s+/g, '_').toLowerCase();
+            cb(null, convert + '.' + extension);
+        }
+    }),
+    fileFilter : (req, file, cb) => {
+        if(!file) {
+            cb();
+        }
+        const singleImage = file.mimetype.startsWith('image/');
+        if(singleImage) {
+            cb(null, true);
+        } else {
+            cb(message, "File type not supported"); 
+        }
+    }
+};
+
 
 //POST REQUEST
 //Add todo
@@ -120,6 +146,17 @@ app.get('/list', (req, res) => {
     });
 });
 
+app.get('/image', (req, res) => {
+    res.render('upload.hbs');
+});
+
+app.post('/upload', multer(multerConf).single('photo'), (req, res) => {
+    //If find file
+    if(req.file) {
+        req.body.photo = req.file.filename;
+    }
+    console.log(req.body.photo);
+});
 
 app.get('/', (req, res) => {
     res.render('home.hbs');
