@@ -20,8 +20,13 @@
             <div class="form-group">
                 <label for="">File</label>
                 <input class="form-control-file" type="file" name="photo" id="photo">
+                {{#if success}}
+                    <small>Successfully Uploaded</small>
+                {{/if}}
             </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>  
         </form>
     </div>
 </body>
