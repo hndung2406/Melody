@@ -3,39 +3,39 @@
     <head>
         <meta charset="utf-8">
         <title>Home</title>
-        <link rel="stylesheet" type="text/css" href="./css/home.css">
+        <link rel="stylesheet" type="text/css" href="/css/home.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
 
         <!-- fotorama.css & fotorama.js. -->
         <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
-
-
         {{> header}}
+        
     </head>
     <body>
+        <div id="page-container">
             {{> navbar}}
 
             <!-- Container for the image gallery -->
-            <div class="container">
+            <div class="container" id="content-wrap">
                 <h1 id="logo">Welcome</h1>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="fotorama">
-                            <img src="./TuLinh.JPG">
-                            <img src="family.jpg">
-                            <img src="family_2.jpg">
-                            <img src="family_3.jpg">
-                            <img src="grandpa-grandma.jpg">
-                            <img src="tho.jpg">
+                            <img src="/images/TuLinh.JPG">
+                            <img src="/images/family.jpg">
+                            <img src="/images/family_2.jpg">
+                            <img src="/images/family_3.jpg">
+                            <img src="/images/grandpa-grandma.jpg">
+                            <img src="/images/tho.jpg">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <h1 style="text-align: center; font-weight: bold;">About me</h1>
                         <p style="text-indent: 20px; text-align: justify">Hi, My name is Hoàng Ngọc Dũng, I'm currently a senior majoring in Computer Science at Knox College. 
                         After trying a lot of different majors, I think Computer Science is best suited for me as I'm kind of a reserved person. Right now, I'm currently working as Java Software Engineer
-                        in FPT Software. My favorite quote: </p>
+                        in FPT Software. And yes, I'm an Appleholic! My favorite quote: </p>
                         <div style="text-align: center; font-style: italic">"Without sacrifice, there can be no victory"</div>
                         <small class="d-flex justify-content-end">- King Arthur, Transformers: The Last Knight</small>
                     </div>
@@ -45,6 +45,6 @@
             </div>
 
             {{> footer}}
-        
+        </div>
     </body>
 </html>

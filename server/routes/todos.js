@@ -4,7 +4,6 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const fs = require('fs');
-const path = require('path')
 
 //Local import
 const Todo = require('../model/todo');
@@ -12,11 +11,11 @@ const Todo = require('../model/todo');
 //Middleware for bodyParser
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
+    extended: true
 }));
 
 // create a write stream (in append mode)
-var accessLogStream = fs.createWriteStream('./server', { flags: 'a' });
+var accessLogStream = fs.createWriteStream('./server.log', { flags: 'a' });
 
 //Middleware for Morgan
 router.use(morgan('dev', { stream: accessLogStream }));
@@ -48,7 +47,7 @@ router.post('/add', (req,res) => {
 
     todo.save().then((doc) => {
         var success = true;
-        res.redirect('/add?success=' + success);
+        res.redirect('/todo/add?success=' + success);
     }, (err) => {
         res.status(400).send(err);
     });

@@ -1,17 +1,11 @@
 .footer {
-    position: relative;
-    right: 0;
+    position: absolute;
     bottom: 0;
-    left: 0;
     padding: 1rem;
     background-color: #343a40!important;
     text-align: center;
     color: white;
-}
-
-.home {
-    min-height:100%;
-    position: relative;
+    width: 100%;
 }
 
 body {
@@ -20,7 +14,10 @@ body {
     height:100%;
 }
 
-.container {
-    padding:10px;
-    padding-bottom:10px;
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+#content-wrap {
+    padding-bottom: 8rem;    /* Footer height */
 }
