@@ -7,7 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 
 //Local import
-const Wish = require('../model/wish')
+const Wish = require('../model/wish');
 
 //Middleware for bodyParser
 router.use(bodyParser.json());
@@ -47,6 +47,7 @@ const multerConf = {
 };
 
 //GET REQUEST
+//Render upload page
 router.get('/upload', (req, res) => {
     var success = req.query.success;
     res.render('upload.hbs', {
@@ -54,10 +55,20 @@ router.get('/upload', (req, res) => {
     });
 });
 
+router.get('/wishes', (req, res) => {
+    Wish.find({}).then((wishes) => {
+        res.render('list.hbs', {wishes});
+    }, (err) => {
+        res.status(400).send(err);
+    });
+});
+
+//POST REQUEST
+//upload using multer
 router.post('/upload', multer(multerConf).single('photo'), (req, res) => {
 
     //Convert int to String
-    var price = req.body.price.toString();
+    var price = req.body.price + "$";
     
     //If find file
     if(req.file) {
@@ -84,6 +95,60 @@ router.post('/upload', multer(multerConf).single('photo'), (req, res) => {
         res.status(400).send(err);
     });
    
+});
+
+//Update using multer
+router.post('/update', multer(multerConf).single('photo'), (req, res) => {
+
+    var price = req.body.price + "$";
+
+    //If find file
+    if(req.file) {
+        req.body.photo = req.file.filename;
+        //Create path to Image
+        var image = "/images/" + req.body.photo;
+        Wish.findByIdAndUpdate(req.body.id, {
+            $set: {
+                name: req.body.text,
+                image: image,
+                link: req.body.link,
+                price: price,
+                description: req.body.description
+            }
+        }, {
+            returnOriginal: false
+        }).then((wish) => {
+            res.redirect('/wish/wishes');
+        }).catch((err) => {
+            res.status(400).send(err);
+        })
+    } else {
+        Wish.findByIdAndUpdate(req.body.id, {
+            $set: {
+                name: req.body.text,
+                link: req.body.link,
+                price: price,
+                description: req.body.description
+            }
+        }, {
+            returnOriginal: false
+        }).then((wish) => {
+            res.redirect('/wish/wishes');
+        }).catch((err) => {
+            res.status(400).send(err);
+        })
+    }
+});
+
+router.post('/delete', (req, res) => {
+    Wish.findByIdAndRemove(req.body.idDelete).then((wish) => {
+        if(!wish) {
+            res.status(400).send();
+        }
+        res.redirect('/wish/wishes');
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
 });
 
 module.exports = router;

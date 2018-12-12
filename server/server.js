@@ -20,6 +20,7 @@ app.set('view engine', 'hbs');
 app.use("/js",express.static(__dirname + "/views/js"));
 app.use("/css", express.static(__dirname + "/views/css"));
 app.use("/images", express.static(__dirname + "/views/images"));
+app.use("/lightbox", express.static(__dirname + "/views/lightbox2-master/dist"));
 
 //Config path for router
 app.use('/todo', todos);

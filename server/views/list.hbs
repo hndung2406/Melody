@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>List Todos</title>
+        <title>Wish List</title>
         <style media="screen">
             
             td, th {
@@ -24,27 +24,31 @@
             {{> navbar}}
             <div class="container" id="content-wrap">
                 <h1 style="text-align: center; padding-top: 20px; padding-bottom: 20px">Wish List</h1>
-                <table class="table table-striped">
-                    <tr>
-                        <th style="display: none">Id</th>
-                        <th>Todo</th>
-                        <th>Completed</th>
-                        <th>Time</th>
-                        <th>Operation</th>
-                    </tr>
-                    {{#each todos}}
+                <div style="overflow-x:auto;">
+                    <table class="table table-striped" >
                         <tr>
-                            <th style="display: none">{{_id}}</th>
-                            <th>{{text}}</th>
-                            <th>{{completed}}</th>
-                            <th>{{completedAt}}</th>
-                            <th>
-                                <button class="btn btn-info" type="button" data-toggle="modal" data-target="#updateModal" style="margin-right: 10px">Update</button>
-                                <button class="btn btn-danger" type="button"  data-toggle="modal" data-target="#deleteModal">Delete</button>
-                            </th>
+                            <th style="display: none">Id</th>
+                            <th style="width: 20%;">Name</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th style="width: 44%">Description</th>
+                            <th>Operation</th>
                         </tr>
-                    {{/each}}
-                </table>
+                        {{#each wishes}}
+                            <tr>
+                                <th style="display: none">{{_id}}</th>
+                                <th><a href="{{link}}" target="_blank" style="color: black">{{name}}</a></th>
+                                <th style="text-align: center"><a href="{{image}}" data-lightbox="image-1" data-title="{{name}}"><img src="{{image}}" style="width: 70px; height: 70px;" alt=""></a></th>
+                                <th style="font-weight: normal">{{price}}</th>
+                                <th style="font-weight: normal">{{description}}</th>
+                                <th>
+                                    <button class="btn btn-info" type="button" data-toggle="modal" data-target="#updateModal" style="margin-right: 10px"><i class="fas fa-pen"></i></button>
+                                    <button class="btn btn-danger" type="button"  data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+                                </th>
+                            </tr>
+                        {{/each}}
+                    </table>
+                </div>
             </div>
 
             <!-- Modal Update-->
@@ -57,21 +61,37 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form class="" action="/todo/update" method="post">
+                        <form class="" action="/wish/update" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <input type="hidden" name="id" id="id">
                                 </div>
                                 <div class="form-group">
-                                    <label>Todo</label>
+                                    <label>Name</label>
                                     <input type="text" class="form-control" id="text" name="text">
                                 </div>
                                 <div class="form-group">
-                                    <label>Completed</label>
-                                    <select class="form-control" id="select-completed" name="completed">
-                                        <option value="True">Yes</option>
-                                        <option value="False">No</option>
-                                    </select>
+                                    <label for="">Image Name</label>
+                                    <input class="form-control" type="text" name="fileName" id="fileName">
+                                </div>
+                                <div class="form-group">
+                                    <p>Image</p>
+                                    <img src="" style="width:100px; height: 100px;" alt="" id="image">
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control-file" name="photo" id="photo">
+                                </div>
+                                <div class="form-group">
+                                    <label>Link</label>
+                                    <input type="text" class="form-control" id="link" name="link">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="number" class="form-control" id="price" name="price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" id="description" name="description">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -93,7 +113,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form class="" action="/todo/delete" method="post">
+                        <form class="" action="/wish/delete" method="post">
                             <div class="modal-body">
                                 <p>Do you want to delete?</p>
                                 <input type="hidden" name="idDelete" id="idDelete">
@@ -108,6 +128,7 @@
             </div>
 
             <script src="/js/list.js"></script>
+            <script src="/lightbox/js/lightbox-plus-jquery.min.js"></script>
             {{> footer}}
         </div>
     </body>
