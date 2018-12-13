@@ -827,3 +827,6 @@
 [0mGET /wish/wishes [36m304 [0m39.347 ms - -[0m
 [0mGET /wish/upload [36m304 [0m5.767 ms - -[0m
 [0mGET /wish/wishes [36m304 [0m13.273 ms - -[0m
+[0mGET /wish/addWish [33m404 [0m9.658 ms - 151[0m
+[0mGET /wish/ [33m404 [0m0.736 ms - 144[0m
+[0mGET /wish/wishes [36m304 [0m38.533 ms - -[0m
