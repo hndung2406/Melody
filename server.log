@@ -860,3 +860,4 @@
 [0mPOST /wish/delete [36m302 [0m4.571 ms - 68[0m
 [0mGET /wish/wishes [32m200 [0m11.750 ms - 21908[0m
 [0mGET /wish/wishes [36m304 [0m8.417 ms - -[0m
+[0mGET /wish/wishes [36m304 [0m10.219 ms - -[0m
