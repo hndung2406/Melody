@@ -7,6 +7,9 @@ const mongoose = require('./db/mongoose');
 const todos = require('./routes/todos');
 const wishes = require('./routes/wishes');
 
+//Port constant
+const port = process.env.PORT || 3000;
+
 //Use express
 var app = express();
 
@@ -30,6 +33,6 @@ app.get('/', (req, res) => {
     res.render('home.hbs');
 });
 
-app.listen(3000,  () => {
-    console.log('Started on port 3000');
+app.listen(port,  () => {
+    console.log('Started on port ' + port);
 });

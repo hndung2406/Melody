@@ -55,6 +55,7 @@ router.get('/upload', (req, res) => {
     });
 });
 
+//Render wish list page
 router.get('/wishes', (req, res) => {
     Wish.find({}).then((wishes) => {
         res.render('list.hbs', {wishes});
