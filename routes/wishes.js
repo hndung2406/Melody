@@ -57,7 +57,7 @@ router.get('/upload', (req, res) => {
 
 //Render wish list page
 router.get('/wishes', (req, res) => {
-    Wish.find({}).then((wishes) => {
+    Wish.find({}).sort({name: 1}).then((wishes) => {
         res.render('list.hbs', {wishes});
     }, (err) => {
         res.status(400).send(err);
