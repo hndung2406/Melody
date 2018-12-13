@@ -3,14 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title>Home</title>
-        <link rel="stylesheet" type="text/css" href="/css/home.css">
-
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-        <!-- fotorama.css & fotorama.js. -->
-        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
         {{> header}}
+        <link rel="stylesheet" type="text/css" href="/css/home.css">
+        <link rel="stylesheet" href="/library/fotorama-4.6.4/fotorama.css">
+        <script src="/library/fotorama-4.6.4/fotorama.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!-- fotorama.css & fotorama.js. -->
         
     </head>
     <body>
@@ -45,7 +43,6 @@
             </div>
 
             {{> footer}}
-            <script src="/lightbox/js/lightbox-plus-jquery.min.js"></script>
         </div>
     </body>
 </html>
