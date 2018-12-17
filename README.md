@@ -1,5 +1,8 @@
 # Mongo-Node
-Created with NodeJs/ExpressJs, MongoDb/Mongoose for manipulating database and Handlebars for Front-end
+Technology used:
+- MongoDB/Mongoose for database manipulating
+- NodeJS/ExpressJS for back-end
+- Handlebars for front-end
 
 # MIT License
 
