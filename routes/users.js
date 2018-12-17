@@ -17,7 +17,7 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //Create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream('./server.log', { flags: 'a' });
 
-//Middleware for Morgan
+//Middleware for Morgan 
 router.use(morgan('dev', { stream: accessLogStream }));
 
 //GET REQUEST
@@ -49,7 +49,7 @@ router.post('/register', (req, res) => {
         var error = true;
         res.redirect('/user/register?error=' + error);
     } else {
-        
+
         //If password matches
         //Get the user model
         var user = new User({
@@ -60,10 +60,12 @@ router.post('/register', (req, res) => {
         })
 
         //save it to database
-        user.save().then((user) => {
+        user.save().then(() => {
+            return user.generateAuthToken();
+        }).then((token) => {
             var success = true;
-            res.redirect('/user/register?success=' + success);
-        }, (err) => {
+            res.header('x-auth', token).redirect('/user/register?success=' + success);
+        }).catch((err) => {
             res.status(400).send(err);
         });
     }
