@@ -6,6 +6,7 @@ const hbs = require('hbs');
 const mongoose = require('./db/mongoose');
 const todos = require('./routes/todos');
 const wishes = require('./routes/wishes');
+const users = require('./routes/users');
 
 //Port constant
 const port = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ app.use("/library", express.static(__dirname + "/library"));
 //Config path for router
 app.use('/todo', todos);
 app.use('/wish', wishes);
+app.use('/user', users);
 
 app.get('/', (req, res) => {
     res.render('home.hbs');

@@ -24,15 +24,18 @@ router.use(morgan('dev', { stream: accessLogStream }));
 //Store and Validation Multer
 const multerConf = {
     storage : multer.diskStorage({
+        //Destination to folder
         destination : (req, file, cb) => {
             cb(null, './views/images');
         },
+        //Filename
         filename : (req, file, cb) => {
             const extension = file.mimetype.split('/')[1];
             var convert = req.body.fileName.replace(/\s+/g, '_').toLowerCase();
             cb(null, convert + '.' + extension);
         }
     }),
+    //Filtering to look for image only
     fileFilter : (req, file, cb) => {
         if(!file) {
             cb();
@@ -124,6 +127,7 @@ router.post('/update', multer(multerConf).single('photo'), (req, res) => {
             res.status(400).send(err);
         })
     } else {
+        //If no find is found, we will update withtout updating picture
         Wish.findByIdAndUpdate(req.body.id, {
             $set: {
                 name: req.body.text,
@@ -141,6 +145,7 @@ router.post('/update', multer(multerConf).single('photo'), (req, res) => {
     }
 });
 
+//Delete a wish
 router.post('/delete', (req, res) => {
     Wish.findByIdAndRemove(req.body.idDelete).then((wish) => {
         if(!wish) {
