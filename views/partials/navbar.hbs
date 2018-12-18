@@ -6,24 +6,33 @@
         <a class="navbar-brand" href="/"><img src="/images/logo.png" style="width: 100px; height:40px;"></a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">Wish</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/wish/wishes">Wish List</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/wish/wishes">Wish List</a></li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/wish/upload">Wish Add</a>
-                    </div>
+                        <li><a class="dropdown-item" href="/wish/upload">Wish Add</a></li>
+                    </ul>
                 </li>
                 
             </ul>
             <ul class="navbar-nav" style="padding-right: 10px;">
-                <li class="nav-item d-flex justify-content-end">
-                    <a class="nav-link" href="/user/register">Register</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="/user/login">Login</a>
-                </li>
+                {{#if user}}
+                    <li class="nav-item d-flex justify-content-end">
+                        <a><img src="/images/img_avatar.png" alt="Avatar" style="width:40px; border-radius: 50%; margin-right:10px;"></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/user/logout">Logout</a>
+                    </li>
+                {{else}}
+                    <li class="nav-item d-flex justify-content-end">
+                        <a class="nav-link" href="/user/register">Register</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/user/login">Login</a>
+                    </li>
+                {{/if}}
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
