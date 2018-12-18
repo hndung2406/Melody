@@ -33,6 +33,11 @@ router.get('/register', (req, res) => {
     });
 })
 
+router.get('/me', (req, res) => {
+    var token = req.header('x-auth');
+    console.log(token);
+});
+
 // router.get('/json', (req, res) => {
 //     User.find({}).then((users) => {
 //         res.send(users);
@@ -65,6 +70,7 @@ router.post('/register', (req, res) => {
         }).then((token) => {
             var success = true;
             res.header('x-auth', token).redirect('/user/register?success=' + success);
+            // res.header('x-auth', token).send(user);
         }).catch((err) => {
             res.status(400).send(err);
         });
