@@ -21,3 +21,33 @@ body {
 #content-wrap {
     padding-bottom: 8rem;    /* Footer height */
 }
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#sidebar {
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    background: #383838;
+    float: left;
+}
+
+#sidebar ul li {
+    color: white;
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid #808080;
+}
+#sidebar ul li:hover {
+    background: #808080;
+}
+.side-link {
+    text-decoration: none;
+}
+.side-link:hover {
+    text-decoration: none;
+}
+

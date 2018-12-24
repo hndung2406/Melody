@@ -7,20 +7,24 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown">
+                {{!-- <li class="nav-item dropdown">
+                    {{#if user}}
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">Wish</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/wish/wishes">Wish List</a></li>
-                        <div class="dropdown-divider"></div>
-                        <li><a class="dropdown-item" href="/wish/upload">Wish Add</a></li>
+                            <li><a class="dropdown-item" href="/wish/wishes">Wish List</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="/wish/upload">Wish Add</a></li>
                     </ul>
-                </li>
-                
+                    {{/if}}
+                </li> --}}
+                <li class="nav-item active">
+                    <li><a class="nav-link" href="/wish/wishes">Wish List</a></li>
+                </li>       
             </ul>
             <ul class="navbar-nav" style="padding-right: 10px;">
                 {{#if user}}
                     <li class="nav-item d-flex justify-content-end">
-                        <a><img src="/images/img_avatar.png" alt="Avatar" style="width:40px; border-radius: 50%; margin-right:10px;"></a>
+                        <a href="/user/{{user._id}}"><img src="/images/img_avatar.png" alt="Avatar" style="width:40px; border-radius: 50%; margin-right:10px;"></a>
                     </li>
                     <li>
                         <a class="nav-link" href="/user/logout">Logout</a>

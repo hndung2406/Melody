@@ -62,6 +62,14 @@ router.get('/logout', (req, res) => {
     res.redirect('/user/login');
 });
 
+//Get the user page
+router.get('/:id', authenticated, (req, res) => {
+    if(req.params.id != req.user._id) {
+        res.redirect('/');
+    } else {
+        res.render('user.hbs');
+    }
+})
 
 
 //POST REQUEST
@@ -88,7 +96,7 @@ router.post('/register', (req, res) => {
             return user.generateAuthToken();
         }).then((token) => {
             var success = true;
-            res.header('x-auth', token).redirect('/user/register?success=' + success);
+            res.redirect('/user/register?success=' + success);
             // res.header('x-auth', token).send(user);
         }).catch((err) => {
             res.status(400).send(err);
@@ -111,8 +119,17 @@ router.post('/login', (req, res, next) => {
                 return next(err);
             }
             return res.redirect('/');
+            
         });
     })(req, res, next);
 });
+
+function authenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/user/login');
+    }
+}
 
 module.exports = router;

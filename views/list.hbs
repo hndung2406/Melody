@@ -37,21 +37,21 @@
                             <th style="display: none">Id</th>
                             <th style="width: 15%;">Name</th>
                             <th style="width: 15%;">Image</th>
-                            <th>Price</th>
+                            <th style="width: 5%;">Price</th>
                             <th style="width: 44%">Description</th>
-                            <th>Operation</th>
+                            {{!-- <th>Operation</th> --}}
                         </tr>
                         {{#each wishes}}
                             <tr>
-                                <th style="display: none">{{_id}}</th>
-                                <th><a href="{{link}}" target="_blank" style="color: black">{{name}}</a></th>
-                                <th style="text-align: center"><a href="{{image}}" data-lightbox="{{price}}" data-title="{{name}}"><img src="{{image}}" style="max-width: 50%; max-height: auto;" alt=""></a></th>
-                                <th style="font-weight: normal; text-align: right" class="price">{{price}}</th>
-                                <th style="font-weight: normal; text-align: justify">{{description}}</th>
-                                <th style="text-align: center">
+                                <td style="display: none">{{_id}}</th>
+                                <td><a href="{{link}}" target="_blank" style="color: black">{{name}}</a></td>
+                                <td style="text-align: center"><a href="{{image}}" data-lightbox="{{price}}" data-title="{{name}}"><img src="{{image}}" style="max-width: 50%; max-height: auto;" alt=""></a></td>
+                                <td style="font-weight: normal; text-align: right" class="price">{{price}}</td>
+                                <td style="font-weight: normal; text-align: justify">{{description}}</td>
+                                {{!-- <td style="text-align: center">
                                     <button class="btn btn-info" type="button" data-toggle="modal" data-target="#updateModal" style="margin-right: 10px"><i class="fas fa-pen"></i></button>
                                     <button class="btn btn-danger" type="button"  data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
-                                </th>
+                                </td> --}}
                             </tr>
                         {{/each}}
                     </table>

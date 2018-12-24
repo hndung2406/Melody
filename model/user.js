@@ -42,29 +42,6 @@ var userSchema = mongoose.Schema({
     }]
 });
 
-// //Find the user based on email and password
-// userSchema.statics.findByCredentials = function(email, password) {
-    
-//     var user = this;
-
-//     return user.findOne({email}).then((user) => {
-//         if(!user) {
-//             return Promise.reject();
-//         }
-//         return new Promise((resolve, reject) => {
-//             //Compare password with encrypted one
-//             bcrypt.compare(password, user.password, (err, res) => {
-//                 if(res) {
-//                     resolve(user);
-//                 } else {
-//                     reject();
-//                 }
-//             });
-//         });
-//     });
-
-// } 
-
 //Parse object into JSON
 userSchema.methods.toJSON = function() {
     var user = this;
@@ -85,6 +62,19 @@ userSchema.methods.generateAuthToken = function() {
 
     return user.save().then(() => {
         return token;
+    });
+};
+
+//Delete token when logout
+userSchema.methods.removeToken = function(token) {
+    var user = this;
+ 
+    return user.update({
+        $pull: {
+            token: {
+                token: token
+            }
+        }
     });
 };
 
