@@ -1,4 +1,4 @@
-# Mongo-Node
+# Melody
 Technology used:
 - MongoDB/Mongoose for database manipulating
 - NodeJS/ExpressJS for back-end
