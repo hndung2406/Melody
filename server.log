@@ -2042,3 +2042,8 @@
 [0mGET /user/5c205aa0495fcf2b9ca2596f [36m304 [0m1.936 ms - -[0m
 [0mGET /wish/wishes [32m200 [0m17.236 ms - 18634[0m
 [0mGET /user/5c205aa0495fcf2b9ca2596f [36m304 [0m1.972 ms - -[0m
+[0mGET /user/5c205aa0495fcf2b9ca2596f [36m304 [0m9.630 ms - -[0m
+[0mGET /wish/wishes [32m200 [0m33.140 ms - 18443[0m
+[0mGET /wish/wishes [36m304 [0m12.698 ms - -[0m
+[0mGET /user/login [32m200 [0m5.417 ms - 5685[0m
+[0mGET /wish/wishes [36m304 [0m10.242 ms - -[0m
